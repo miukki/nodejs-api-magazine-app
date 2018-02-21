@@ -1,0 +1,32 @@
+ <section>
+  <legend>{{action}} description:</legend>
+  <form name="formDescr" ng-submit="isEditMode || stateParamsId ? updateDescr() : nextStep()">
+    <fieldset>
+        <div class="form-group">
+          <label>Edit:</label>
+          <textarea ng-change="Descr(item.text);updatePreview();" ng-model="item.text" name="text" ng-trim="true" placeholder="{{item.placeholder}}"></textarea>
+        </div>
+        <div class="form-group" ng-show="cStr">
+          <label>Total preview wiht contacts:</label>
+          <textarea disabled>{{textarea}}</textarea>
+
+        </div>
+        <div class="form-group">
+          <span ng-show="cStr">
+            <label>Count words:</label>{{item.count}}
+            <label>Count contacts:</label>{{item.contacts.length}}
+          </span>
+          <label>Total count:</label>{{item.count+item.contacts.length}}
+        </div>
+
+    </fieldset>
+
+    <button type="submit" ng-disabled="!formDescr.$valid" ng-hide="!isEditMode">save</button>
+
+    <footer>
+      <button type="submit" ng-disabled="!formDescr.$valid" style="float:right;" ng-hide="isEditMode">next</button>
+      <button a ui-sref="issues-ad({ id: stateParamsId })" ng-show="stateParamsId && !isEditMode">prev step</button>
+    </footer>
+
+  </form>
+</section>

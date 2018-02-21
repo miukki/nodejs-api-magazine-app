@@ -1,0 +1,78 @@
+<h3>{{action}} options ad</h3>
+
+<section>
+  <legend>Text preview:</legend>
+  <fieldset >
+    <div ui-view="textpreview"></div>
+  </fieldset>
+
+</section>
+
+
+
+<section>
+ <form name="form" ng-submit="updateOpt(choosenOptions)">
+    <legend>{{action}} options ad:</legend>
+    <fieldset>
+        <div class="form-group" ng-repeat="o in optionsGroups | orderBy: 'title' " >
+
+          <label
+            style="text-align:left;"
+            ng-init="
+              o.choosenId = (o.id == 1) ? 23 : (o.id == 4  && (count + contactsL) == 1) ? 29 : choosenOptions[o.id] || o.defaultOptionId;
+              o.value = (o.choosenId != o.defaultOptionId);
+              updateIntersect(o);
+              o.disabled = (o.id == 1) || (o.id == 4  && (count + contactsL) == 1);
+              "
+            ng-disabled="disabledOptions[o.id] || o.disabled"
+            ng-hide="o.id!=7 && o.id!=6 && o.id!=10 "
+            >
+              <input type="checkbox" ng-model="o.value" ng-checked="o.choosenId != o.defaultOptionId" ng-click="changeR(undefined, o);updateIntersect();" ng-disabled="disabledOptions[o.id] || o.disabled"> {{o.title}}
+          </label>
+
+          <div style="margin-bottom:20px;border-bottom: 1px solid black;" ng-class="o.id==7 || o.id==6 || o.id==10 ? 'pl-30' : '' "
+          ng-hide= "
+              (o.id == 9 && !isServiceImg) ||
+              (o.id == 8 && isServiceImg) ||
+              (o.id == 4  && (count + contactsL) > 1)
+          " >
+
+            <div ng-show="(o.id!=7 &&  o.id!=6 && o.id!=10) || (o.choosenId!=o.defaultOptionId)">
+              <div ng-repeat="opt in o.options"
+              ng-hide="opt.id == o.defaultOptionId "><!-- disappear all default options-->
+                <label
+                 ng-disabled="disabledOptions[o.id] || o.disabled || ((o.id == 9 || o.id == 8) && exImgs && exImgs.length)"
+                 style="text-align:left;" >
+                    <input type="checkbox" ng-click="changeR(opt, o);updateIntersect();enableImagePanel(opt,o);" ng-model="opt.value" ng-checked="opt.id == o.choosenId"
+                    ng-disabled="disabledOptions[o.id] || o.disabled || ((o.id == 9 || o.id == 8) && exImgs && exImgs.length)"
+                    ng-init="enableImagePanel(opt,o);"> {{opt.name}}
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </fieldset>
+    <div ng-show="imageControl">
+      <div ui-view="imgs"></div>
+    </div>
+
+
+
+  <footer>
+    <button type="button" style="float:right;margin-left: 5px;" ng-click="updateOpt(choosenOptions, 'preview-ad.abs')" ng-show="!isEditMode && stateParamsId" ng-disabled="imageControl && !exImgs.length">next</button>
+
+<!--
+    <button style="float:right;" ng-show="stateParamsId" a ui-sref="delete-ad({ id: stateParamsId })" >delete Ad</button>
+-->
+     <button type="button" ng-click="updateOpt(choosenOptions, 'contacts-ad')"  ng-show="!isEditMode && stateParamsId" ng-disabled="imageControl && !exImgs.length">prev</button>
+
+     <!-- a ui-sref="contacts-ad({ id: stateParamsId })"-->
+     <button type="submit" ng-show="stateParamsId && isEditMode" ng-disabled="imageControl && !exImgs.length">save</button>
+  </footer>
+
+  </form>
+</section>
+
+
+

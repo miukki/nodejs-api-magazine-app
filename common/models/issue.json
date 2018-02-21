@@ -1,0 +1,41 @@
+{
+  "name": "Issue",
+  "description": "an issue of a publication",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "publishAt": {
+      "type": "date",
+      "required": true,
+      "description": "the planned publication date"
+    },
+    "submissionDeadline": {
+      "type": "date",
+      "required": true,
+      "description": "the deadline for submitting an ad to this issue"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "publication": {
+      "type": "belongsTo",
+      "model": "Publication",
+      "foreignKey": "publicationId"
+    },
+    "ads": {
+      "type": "hasMany",
+      "model": "Ad",
+      "foreignKey": "issueIds"
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "Order",
+      "foreignKey": "issueIds"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

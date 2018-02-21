@@ -1,0 +1,59 @@
+<section>
+
+  <legend>{{action}} caregory and actions:</legend>
+  <form name="form" ng-submit="(isEditMode || stateParamsId) ? editAd(dataC) : null">
+    <fieldset>
+
+      <!-- categories-->
+      <div class="form-group">
+        <label>Categories:</label>
+        <select
+          ng-change="choseCategory(firstId.subcategories.length ? firstId.subcategories : firstId, 0)"
+          ng-model="firstId"
+          ng-options="item.name for item in first track by item.id"
+          ng-click="isReady = false;"
+          >
+        </select>
+        <select
+          ng-hide="!second"
+          ng-change="choseCategory(secondId.subcategories.length ? secondId.subcategories : secondId, 1)"
+          ng-model="secondId"
+          ng-options="item.name for item in second track by item.id"
+          ng-click="isReady = false;"
+          >
+        </select>
+        <select
+          ng-hide="!third"
+          ng-change="choseCategory(thirdId.subcategories.length ? thirdId.subcategories : thirdId, 2)"
+          ng-model="thirdId"
+          ng-options="item.name for item in third track by item.id"
+          ng-click="isReady = false;"
+          >
+        </select>
+      </div>
+
+      <!-- actions-->
+      <div class="form-group" ng-hide="!fourth || (fourth && !fourth.actions.length)">
+        <label>Actions:</label>
+        <select
+          ng-change="choseCategory(fourthId, undefined, fourth)"
+          ng-model="fourthId"
+          ng-options="item.name for item in fourth.actions track by item.id">
+          >
+        </select>
+      </div>
+
+    </fieldset>
+
+    <footer>
+      <button type="submit" ng-show="isEditMode" ng-disabled="!isReady">save</button>
+
+      <button style="float:right;margin-left: 5px;" type="submit" ng-show="!isEditMode && stateParamsId" ng-disabled="!isReady">next</button>
+
+      <button style="float:right;" ng-show="!isEditMode && !stateParamsId" a ui-sref="issues-ad({ id: null })" ng-disabled="!isReady">next</button>
+    </footer>
+
+  </form>
+
+<section>
+

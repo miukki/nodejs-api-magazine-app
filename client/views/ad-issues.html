@@ -1,0 +1,34 @@
+<section>
+  <legend>{{action}} issues Ad</legend>
+  <form name="form" ng-submit="isEditMode || stateParamsId  ? updateIssues() : nextStep()">
+    <fieldset>
+
+      <!-- issues-->
+      <div ng-hide="!issues || (issues && !issues.length)">
+        <div class="form-group">
+          <label style="float:left;">Issue:</label>
+
+          <div>
+            <label ng-repeat="item in issues">
+                <input type="checkbox"
+                  ng-change="Issue(item)"
+                  ng-model="item.value"> <span>{{item.publishAt | date}}</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" ng-disabled="!issueIdsArr.length"  ng-hide="!isEditMode">save</button>
+      </div>
+    </fieldset>
+
+    <footer>
+        <button type="submit" style="float:right;" ng-disabled="!issueIdsArr.length"  ng-hide="isEditMode">next</button>
+        <button a ui-sref="category-ad({ id: stateParamsId })" ng-show="stateParamsId && !isEditMode">prev step</button>
+    </footer>
+
+  </form>
+
+<section>

@@ -1,0 +1,47 @@
+{
+  "name": "Publication",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "period": {
+      "type": "number",
+      "required": true,
+      "description": "period of publication in days"
+    },
+    "submissionCutoff": {
+      "type": "number",
+      "required": true,
+      "description": "stop accepting ad submission how many days before publication"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "publisher": {
+      "type": "belongsTo",
+      "model": "Publisher",
+      "foreignKey": "publisherId"
+    },
+    "issues": {
+      "type": "hasMany",
+      "model": "Issue",
+      "foreignKey": "publicationId"
+    },
+    "optionGroups": {
+      "type": "hasMany",
+      "model": "OptionGroup",
+      "foreignKey": "publicationId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Contact",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {
+    "info": {
+      "type": "string",
+      "required": true
+    },
+    "kind": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ad": {
+      "type": "hasMany",
+      "model": "Ad",
+      "foreignKey": "contactIds"
+    },
+    "owner": {
+      "type": "belongsTo",
+      "model": "Reader",
+      "foreignKey": "ownerId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

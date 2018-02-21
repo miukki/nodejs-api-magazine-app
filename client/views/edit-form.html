@@ -1,0 +1,57 @@
+<section>
+  <div style="margin-bottom:20px;">updatedAt: {{item.updatedAt |  date:'short'}}, createdAt: {{item.createdAt |  date:'short'}}</div>
+
+  <legend>{{action}} category and actions:</legend>
+  <form name="form">
+    <fieldset>
+      <div class="form-group">
+        <span>Category:&nbsp;{{item.category.name}}&nbsp;<span ng-hide="!item.actions.length">|&nbsp;action:
+            <span ng-repeat="a in item.actions">{{a.name}}<font ng-hide="!(item.actions.length-1)">,</font></span>
+          </span> <button a ui-sref="category-ad({ id: idAd, isEditMode: true })">edit</button>
+        </span>
+      </div>
+    </fieldset>
+  </form>
+
+  <legend>{{action}} contacts:</legend>
+  <form name="form">
+    <fieldset>
+      <ul>
+         <li ng-repeat="i in item.contacts">
+          {{i.kind}}: {{i.info}}
+         </li>
+      </ul>
+
+      <button a ui-sref="contacts-ad({ id: idAd, isEditMode: true })">edit</button>
+    </fieldset>
+  </form>
+
+  <legend>{{action}} issues:</legend>
+  <form name="form">
+    <fieldset>
+      <div ui-view="choosenissues"></div>
+    <button a ui-sref="issues-ad({ id: idAd, isEditMode: true })">edit</button>
+    </fieldset>
+  </form>
+
+  <legend>{{action}} description:</legend>
+  <form name="form">
+    <fieldset>
+        <div class="form-group">
+          <label>Description:</label>
+          <textarea ng-disabled="true" >{{item.text}}</textarea>
+        </div>
+      <button a ui-sref="descr-ad({ id: idAd, isEditMode: true })">edit</button>
+    </fieldset>
+  </form>
+
+  <legend>{{action}} options <span ng-show="exImgs && exImgs.length">and images</span>:</legend>
+  <form name="form">
+    <fieldset>
+      <div ui-view="textpreview"></div>
+      <button a ui-sref="options-ad.abs({ id: idAd, isEditMode: true })">edit</button>
+    </fieldset>
+  </form>
+
+
+<section>

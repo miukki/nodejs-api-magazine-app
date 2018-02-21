@@ -1,0 +1,15 @@
+{
+  "db": {
+    "host": "localhost",
+    "database": "development",
+    "name": "db",
+    "user": "water",
+    "connector": "postgresql"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./storage"
+  }
+}

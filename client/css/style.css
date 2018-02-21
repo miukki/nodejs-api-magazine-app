@@ -1,0 +1,134 @@
+/*preview style*/
+.text-2-25 {font-weight:bold;}/*bold*/
+.text-3-27 {text-transform: uppercase;}/*capital letter*/
+.text-5-31 {background: black; color: white;} /*inverce*/
+.text-6-17 {background: yellow;}/*backgr*/
+.text-6-18 {background: green;}/*backgr*/
+.text-6-19 {background: pink;}/*backgr*/
+.text-7-10 {}/*icon smile*/
+.text-7-11 {}/*icon phone*/
+.text-7-12 {}/*icon start*/
+.text-7-13 {}/*icon tick*/
+.text-8-33 {}/*photo product*/
+.text-9-35 {}/*photo sevice*/
+.text-10-14 {border: 1px solid black;}/*black frame*/
+.text-10-15 {border: 1px solid green;}/*gree frame*/
+.text-10-16 {border: 1px solid pink;}/*pink frame*/
+.img-checked {border: 2px solid green;}
+
+.clearfix:after {
+  content: "";
+  display:table;
+  clear: both;
+}
+/*global*/
+.pl-30 {
+  padding-left: 30px;
+}
+* {
+  margin:0;
+  padding:0;
+}
+body {
+  font-family:'courier new';
+  font-size:1rem;
+}
+button {
+  background:#eee;
+  border:0;
+  color:#777;
+  cursor:pointer;
+  font-family:'courier new';
+  font-size:1rem;
+  padding:.5rem;
+}
+button:active {
+  background:#ddd;
+}
+[disabled] {
+  opacity:0.3;
+}
+input[disabled] {
+  opacity:1;
+
+}
+fieldset {
+  color:#777;
+  padding:1rem;
+}
+fieldset legend {
+  border:1px solid #777;
+  padding:0 .5rem;
+}
+label {
+  display:inline-block;
+  text-align:right;
+  vertical-align:middle;
+  width:200px;
+}
+select {
+  background:#ddd;
+  text-indent: 0.01px;
+  text-overflow: "";
+}
+p {
+  padding:1rem;
+}
+/*header*/
+body > header {
+  border-bottom:1px solid #ccc;
+}
+body > header h1 {
+  font-size:2rem;
+  padding:1rem 1rem 0 1rem;
+}
+body > header h2 {
+  font-size:1rem;
+  padding:0 1rem;
+}
+/*nav*/
+body > header nav {
+  padding:1rem;
+}
+body > header nav li {
+  display:inline-block;
+  padding-bottom:.5rem;
+}
+body > header nav li a {
+  color:#777;
+  padding:.5rem;
+  text-decoration:none;
+}
+body > header nav li a.active {
+  background:#eee;
+}
+/*main*/
+main section {
+  padding:1rem;
+}
+main section article {
+  padding-bottom:2rem;
+}
+main section article h1 {
+  font-size:1.5rem;
+}
+main section article h2 {
+  font-size:1rem;
+  margin-bottom:1rem;
+}
+/*main form*/
+main input,
+select,
+textarea {
+  background:#ddd;
+  border:0;
+  display:inline-block;
+  font-family:'courier new';
+  margin-bottom:1rem;
+  padding:.5rem;
+  vertical-align:middle;
+}
+main select,
+textarea {
+  width:300px;
+}

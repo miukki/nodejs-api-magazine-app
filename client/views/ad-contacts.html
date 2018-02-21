@@ -1,0 +1,82 @@
+<section>
+  <legend>{{action}} contacts ad form</legend>
+  <br>
+
+
+  <div>Link existing contacts fields with Ad:</div>
+  <form>
+      <fieldset>
+        <ul>
+           <li ng-repeat="c in allContacts">
+                <label>
+                    {{c.kind}}: {{c.info}}
+                    <input type="checkbox"
+                      ng-change="linkContact(c)"
+                      ng-model="cObj[c.id]">
+                </label>
+           </li>
+        </ul>
+      </fieldset>
+  </form>
+
+
+  <div ng-hide="!exContacts.length">
+  <div>Linked contact fields  with this add</div>
+  <fieldset>
+   <ul>
+       <li ng-repeat="item in exContacts">
+      {{item.kind}}: {{item.info}} <input ng-click="deleteContact(item.id)" value="unlink" type="button">
+       </li>
+    </ul>
+
+  </fieldset>
+  </div>
+
+
+  <div>Create new contact fields for this Ad</div>
+  <form name="form" ng-submit="submitForm(itemAct)">
+    <fieldset>
+      <!-- categories-->
+      <div class="form-group">
+        <label>Contacts:</label>
+        <select
+          ng-init="itemAct = kind[0] "
+          name="kind"
+          ng-model="itemAct"
+          ng-options="item.name for item in kind track by item.name">
+        </select>
+        <input type="text" ng-model="itemAct.info" placeholder="{{itemAct && itemAct.placeholder ? itemAct.placeholder : '' }}"  name="info" required ng-minlength="1" ng-pattern="itemAct.pattern" ng-trim="true" >
+    </div>
+
+    <div class="form-group">
+      <span class="error" ng-show="form.info.$error.required">
+        Required {{itemAct.name}}!</span>
+      <span class="error" ng-show="form.info.$error.pattern">
+        Wrong format for {{itemAct.name}}!</span>
+    </div>
+
+    <div class="form-group">
+      <label></label>
+      <button type="submit" ng-disabled="!form.$valid">add contact</button>
+    </div>
+
+    </fieldset>
+
+  </form>
+
+  <footer>
+
+    <div style="float:right;">
+      <button ui-sref="options-ad.abs({ id: stateParamsId })" ng-hide="isEditMode" ng-disabled="!exContacts || (exContacts && !exContacts.length)">next step</button>
+    </div>
+    <div style="float:left;">
+
+      <button a ui-sref="edit-ad.abs({ id: stateParamsId })" ng-hide="!isEditMode">save and back to prev step</button>
+      <button a ui-sref="descr-ad({ id: stateParamsId })" ng-show="stateParamsId && !isEditMode">prev step</button>
+
+    </div>
+
+  </footer>
+
+<section>
+

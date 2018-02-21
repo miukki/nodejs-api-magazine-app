@@ -1,0 +1,12 @@
+html
+  head
+    title demo: payment flow
+  body
+    h1 payment flow demo
+    h2 ad details
+    ul
+      li= `id: ${adId}`
+      li= `text: ${adText}`
+      li= `cost: ${adCost}`
+      li= `expire at: ${expireAt}`
+    a(href=paymentUrl) continue to pay at Robokassa

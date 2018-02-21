@@ -1,0 +1,37 @@
+{
+  "name": "Image",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {
+    "fileName": {
+      "type": "string",
+      "required": true
+    },
+    "container": {
+      "type": "string",
+      "required": true,
+      "default": "test"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ads": {
+      "type": "hasMany",
+      "model": "Ad",
+      "foreignKey": "imageIds"
+    },
+    "owner": {
+      "type": "belongsTo",
+      "model": "Reader",
+      "foreignKey": "ownerId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

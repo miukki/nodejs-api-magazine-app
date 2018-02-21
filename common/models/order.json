@@ -1,0 +1,91 @@
+{
+  "name": "Order",
+  "base": "PersistedModel",
+  "mixins": {
+    "Timestamp": {}
+  },
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "invoiceId": {
+      "type": "number",
+      "required": true,
+      "description": "robokassa only accepts numerical invoice id"
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "default": "pending"
+    },
+    "amount": {
+      "type": "number",
+      "required": true,
+      "description": "the invoice amount in cents"
+    },
+    "dueAmount": {
+      "type": "number",
+      "required": true,
+      "description": "the amount to be paid"
+    },
+    "refundableAmount": {
+      "type": "number",
+      "required": true,
+      "description": "the refundable amount in cents"
+    },
+    "archivedAd": {
+      "type": "object",
+      "required": true,
+      "description": "the entire ad object and its related data"
+    },
+    "expireAt": {
+      "type": "date",
+      "required": true,
+      "description": "the expiration date of the order"
+    },
+    "paidAt": {
+      "type": "date",
+      "required": false,
+      "description": "the date of successful payment if any"
+    },
+    "paymentMethod": {
+      "type": "string",
+      "required": false,
+      "description": "the payment method returned by payment gateway"
+    },
+    "paymentUrl": {
+      "type": "string",
+      "required": false,
+      "description": "the URL to pay for the order"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "issues": {
+      "type": "referencesMany",
+      "model": "Issue",
+      "foreignKey": "issueIds"
+    },
+    "owner": {
+      "type": "belongsTo",
+      "model": "Reader",
+      "foreignKey": "ownerId",
+      "description": "the reader that created the ad"
+    },
+    "associatedAd": {
+      "type": "belongsTo",
+      "model": "Ad",
+      "foreignKey": "adId",
+      "description": "the ad that generated this order"
+    },
+    "transactions": {
+      "type": "hasMany",
+      "model": "Transaction",
+      "foreignKey": "orderId",
+      "description": "the transactions associated with this order"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

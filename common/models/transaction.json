@@ -1,0 +1,45 @@
+{
+  "name": "Transaction",
+  "base": "PersistedModel",
+  "mixins": {
+    "Timestamp": {}
+  },
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "creditAmount": {
+      "type": "number",
+      "required": true,
+      "description": "credit amount in cents"
+    },
+    "note": {
+      "type": "string",
+      "required": true,
+      "description": "explanation for this transaction"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "owner": {
+      "type": "belongsTo",
+      "model": "Reader",
+      "foreignKey": "ownerId"
+    },
+    "order": {
+      "type": "belongsTo",
+      "model": "Order",
+      "foreignKey": "orderId",
+      "description": "the order this transaction concerns"
+    },
+    "withdrawal": {
+      "type": "belongsTo",
+      "model": "Withdrawal",
+      "foreignKey": "withdrawalId",
+      "description": "the withdrawal this transaction concerns"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

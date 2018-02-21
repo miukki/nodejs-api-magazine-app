@@ -1,0 +1,14 @@
+<section>
+  <article ng-repeat="r in ads.slice().reverse()">
+    <p>{{r.updatedAt | date}} | {{r.category.name}} | text: {{r.text}}
+
+      <span ng-hide="!r.actions || (r.actions && !r.actions.length)"> | actions:
+        <span ng-repeat="a in r.actions">
+          {{a.name}}<span ng-hide="$index == r.actions.length - 1">,</span>
+        </span>
+      </span>
+
+    </p>
+  </article>
+</section>
+

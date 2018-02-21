@@ -1,0 +1,58 @@
+{
+  "name": "magazine-app",
+  "version": "1.0.0",
+  "engines": {
+    "node": "4.2.1",
+    "npm": "3.5.2"
+  },
+  "main": "server/server.js",
+  "scripts": {
+    "test": "mocha server/test",
+    "start": "node server/server.js",
+    "postinstall": "bower install && grunt build",
+    "frontend-dev": "supervisor -w server,common server/server.js",
+    "backend-dev": "supervisor -n error -w server,common server/server.js",
+    "backend-test": "mocha -w server/test"
+  },
+  "dependencies": {
+    "amqplib": "^0.4.1",
+    "body-parser": "^1.14.2",
+    "bower": "^1.7.2",
+    "bunyan": "^1.8.1",
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "csv": "^0.4.6",
+    "grunt": "^0.4.5",
+    "grunt-angular-templates": "^0.5.9",
+    "grunt-cli": "^0.1.13",
+    "grunt-ng-annotate": "^1.0.1",
+    "jade": "^1.11.0",
+    "lodash": "^4.6.1",
+    "loopback": "^2.22.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-component-storage": "1.5.1",
+    "loopback-connector-mongodb": "^1.13.3",
+    "loopback-connector-postgresql": "^2.3.0",
+    "loopback-datasource-juggler": "^2.39.0",
+    "loopback-sdk-angular": "^1.5.0",
+    "moment": "^2.10.6",
+    "serve-favicon": "^2.0.1"
+  },
+  "optionalDependencies": {
+    "loopback-explorer": "^1.1.0"
+  },
+  "devDependencies": {
+    "grunt-docular": "^0.2.4",
+    "grunt-loopback-sdk-angular": "^1.1.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-ng-annotate": "^1.0.1",
+    "jshint": "^2.5.6",
+    "mocha": "^2.3.4",
+    "supervisor": "^0.7.1"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "description": "magazine-app"
+}

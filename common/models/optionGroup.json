@@ -1,0 +1,40 @@
+{
+  "name": "OptionGroup",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "calculationType": {
+      "type": "string",
+      "required": true,
+      "description": "an indicator that will be passed to the cost calculation function"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "publication": {
+      "type": "belongsTo",
+      "model": "publication",
+      "foreignKey": "publicationId"
+    },
+    "options": {
+      "type": "hasMany",
+      "model": "Option",
+      "foreignKey": "optionGroupId",
+      "description": "all the mutually exclusive options"
+    },
+    "defaultOption": {
+      "type": "belongsTo",
+      "model": "Option",
+      "foreignKey": "defaultOptionId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

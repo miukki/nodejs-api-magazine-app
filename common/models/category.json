@@ -1,0 +1,45 @@
+{
+  "name": "Category",
+  "plural": "Categories",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "custom": {
+      "type": "object",
+      "required": true,
+      "default": {}
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ads": {
+      "type": "hasMany",
+      "model": "Ad",
+      "foreignKey": "categoryId"
+    },
+    "subcategories": {
+      "type": "hasMany",
+      "model": "Category",
+      "foreignKey": "supercategoryId"
+    },
+    "supercategory": {
+      "type": "belongsTo",
+      "model": "Category",
+      "foreignKey": "supercategoryId"
+    },
+    "actions": {
+      "type": "referencesMany",
+      "model": "Action",
+      "foreignKey": "actionIds"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

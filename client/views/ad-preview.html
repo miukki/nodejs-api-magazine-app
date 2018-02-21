@@ -1,0 +1,43 @@
+<h3>Preview ad</h3>
+
+<section>
+  <legend>Text preview:</legend>
+  <fieldset >
+    <div ui-view="textpreview"></div>
+  </fieldset>
+</section>
+
+<div ui-view="choosencategories"></div>
+
+<section>
+  <legend>Issued:</legend>
+  <fieldset>
+    <div ui-view="choosenissues"></div>
+  </fieldset>
+</section>
+
+
+<section>
+  <legend>Cost Details:</legend>
+  <fieldset>
+    Total cost: {{cost}} RUB
+  </fieldset>
+</section>
+
+<section>
+  <legend>Status:</legend>
+  <fieldset>
+    {{statusPayment ? 'paid sucessfully': 'pending payment'}}
+  </fieldset>
+</section>
+
+<footer>
+  <button type="button" style="float:right;margin-left: 5px;" a ui-sref="payment-ad({ id: stateParamsId })" ng-show="!isEditMode" >payment details</button>
+
+  <button type="button" a ui-sref="options-ad.abs({ id: stateParamsId })"  ng-show="!isEditMode" >prev</button><!-- a ui-sref="contacts-ad({ id: stateParamsId })"-->
+
+  <!-- for edit mode-->
+  <button type="submit" a ui-sref="edit-ad.abs({ id: stateParamsId })" ng-show="stateParamsId && isEditMode">edit</button>
+
+</footer>
+

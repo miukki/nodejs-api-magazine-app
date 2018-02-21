@@ -1,0 +1,40 @@
+<br>
+<legend>{{action}} images ad:</legend>
+
+<div>All existing images in your profile:</div>
+<fieldset>
+  <div
+  class="form-group" ng-repeat="img in allImgs" >
+      <label style="text-align:left;">
+          <input type="checkbox" ng-change="linkImg(img);" ng-model="imgObj[img.id]" ng-checked="imgObj[img.id]" style="float:left;" >
+          <img ng-src="{{getPath(img.id)}}" alt="{{img.fileName}}" style="width:100px; height: auto; vertical-align:top; float:left;" ng-class="imgObj[img.id] ? 'img-checked': '' ">
+          <input style="float:left; margin-left: 5px;" ng-click="deleteImg(img.id)" ng-hide="allImagesLinkedWithAds[img.id]" value="delete" type="button">
+      </label>
+  </div>
+  Click on picture for link.
+  <bt style="clear:both;"/><br>
+  <span style="color:red;" class="error" ng-show="!exImgs.length">
+  Required at list one image to be selected!</span>
+
+</fieldset>
+
+<div ng-hide="!exImgs.length">
+  <div>Linked images  with this Ad</div>
+  <fieldset>
+   <ul>
+     <li ng-repeat="img in exImgs">
+      <img ng-src="{{getPath(img.id)}}" alt="{{img.fileName}}" style="width:100px; height: auto; vertical-align:top;" ng-class="imgObj[img.id] ? 'img-checked': '' ">
+      <input ng-click="unlinkImg(img.id)" value="unlink" type="button">
+   </li>
+    </ul>
+  </fieldset>
+</div>
+
+<div>Create new contact fields for this Ad</div>
+<fieldset >
+  Select image to upload: <input id="file" fileread ng-change="valImg(myFile)" type="file" ng-model="myFile" name="fileToUpload">
+  <input type="button" ng-click="valImg(myFile, uploadImg)" value="upload" >
+  <div class="form-group">
+    {{errorImage}}
+  </div>
+</fieldset>

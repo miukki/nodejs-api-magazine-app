@@ -1,0 +1,84 @@
+<section>
+  <legend>Profile</legend>
+
+  <form name="form" ng-submit="submitForm()">
+    <fieldset>
+
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="text" ng-model="user.email" name="email" ng-disabled="true">
+     </div>
+      <div class="form-group">
+        <label>Username:</label>
+        <input type="text" ng-model="user.username" name="username" ng-disabled="!isEdit">
+     </div>
+
+
+    <div class="form-group">
+      <button type="submit" >{{!isEdit ? 'edit' : 'save' }}</button>
+    </div>
+
+    </fieldset>
+
+  </form>
+
+<hr/>
+
+
+  <div>Existing  contact fields from all Ads</div>
+  <fieldset>
+    <ul>
+       <li ng-repeat="item in exContacts">
+        <form name="formContacts" ng-submit="submitContacts($index, item)">
+            {{item.kind}}: <span ng-hide="isEditContact[$index]">{{item.info}}</span>
+            <input required type="text" ng-model="item.info" placeholder="{{'+79138392303' }}" name="fieldC" ng-hide="!isEditContact[$index]" ng-pattern="patterns[item.kind]" >
+            <button ng-hide="isEditContact[$index]" ng-click="changeContact($index, item)" type="button">edit</button>
+            <button ng-hide="!isEditContact[$index]" type="submit" ng-disabled="!formContacts.$valid">save</button>
+            <button ng-click="deleteContact(item.id)" ng-disabled="contactIdsLinkedWithAds[item.id]">delete</button>
+
+            <div class="form-group">
+              <span class="error" ng-show="formContacts.fieldC.$error.required">Field {{item.kind}} required!</span>
+              <span class="error" ng-show="formContacts.fieldC.$error.pattern">Wrong {{item.kind}} format!</span>
+            </div>
+
+        </form>
+       </li>
+    </ul>
+  </fieldset>
+
+
+
+
+  <div>Create new contact</div>
+  <form name="formCreate" ng-submit="newContactCreate(itemAct)">
+    <fieldset>
+      <!-- categories-->
+      <div class="form-group">
+        <label>Contacts:</label>
+        <select
+          ng-init="itemAct = kind[0] "
+          name="kind"
+          ng-model="itemAct"
+          ng-options="item.name for item in kind track by item.name">
+        </select>
+        <input type="text" ng-model="itemAct.info" placeholder="{{itemAct && itemAct.placeholder ? itemAct.placeholder : '' }}"  name="info" required ng-minlength="1" ng-pattern="itemAct.pattern" ng-trim="true">
+    </div>
+
+    <div class="form-group">
+      <span class="error" ng-show="formCreate.info.$error.required">
+        Required {{itemAct.name}}, please fill out.</span>
+      <span class="error" ng-show="formCreate.info.$error.pattern">
+        Wrong format for {{itemAct.name}}!</span>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" ng-disabled="!formCreate.$valid">add contact</button>
+    </div>
+
+    </fieldset>
+
+  </form>
+
+
+
+<section>

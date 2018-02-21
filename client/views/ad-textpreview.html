@@ -1,0 +1,15 @@
+<section>
+
+   <ul ng-show="exImgs && exImgs.length">
+     <li style="display:inline-block;" ng-repeat="img in exImgs">
+      <img ng-src="{{getPath(img.id)}}" alt="{{img.fileName}}" style="width:80px; height: auto; vertical-align:top;" style="display:inline-block;">
+     </li>
+  </ul>
+  <div class="{{class}}" >
+    {{text}}
+  </div>
+
+  Count words: {{count}}
+  Count contacts: {{contactsL}}
+  Total for text: {{count + contactsL}}
+</section>

@@ -1,0 +1,40 @@
+{
+  "name": "Withdrawal",
+  "base": "PersistedModel",
+  "mixins": {
+    "Timestamp": {}
+  },
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "status": {
+      "type": "string",
+      "required": true,
+      "default": "pending"
+    },
+    "amount": {
+      "type": "number",
+      "required": true,
+      "description": "the invoice amount in cents"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "owner": {
+      "type": "belongsTo",
+      "model": "Reader",
+      "foreignKey": "ownerId",
+      "description": "the reader that created the ad"
+    },
+    "transaction": {
+      "type": "hasOne",
+      "model": "Transaction",
+      "foreignKey": "withdrawalId",
+      "description": "the transaction associated with this withdrawal"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

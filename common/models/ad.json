@@ -1,0 +1,89 @@
+{
+  "name": "Ad",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": {}
+  },
+  "properties": {
+    "text": {
+      "type": "string",
+      "required": false,
+      "default": ""
+    },
+    "count": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "cost": {
+      "type": "number",
+      "required": true,
+      "default": 100
+    },
+    "options": {
+      "type": "object",
+      "required": true,
+      "default": {}
+    },
+    "publicationId": {
+      "required": true
+    },
+    "paymentStatus": {
+      "type": "string",
+      "required": true,
+      "default": "editable"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "category": {
+      "type": "belongsTo",
+      "model": "Category",
+      "foreignKey": "categoryId",
+      "description": "the listing category"
+    },
+    "contacts": {
+      "type": "referencesMany",
+      "model": "Contact",
+      "foreignKey": "contactIds"
+    },
+    "images": {
+      "type": "referencesMany",
+      "model": "Image",
+      "foreignKey": "imageIds"
+    },
+    "owner": {
+      "type": "belongsTo",
+      "model": "Reader",
+      "foreignKey": "ownerId",
+      "description": "the reader that created this ad"
+    },
+    "actions": {
+      "type": "referencesMany",
+      "model": "Action",
+      "foreignKey": "actionIds",
+      "description": "the listing actions, e.g. offer, ask"
+    },
+    "issues": {
+      "type": "referencesMany",
+      "model": "Issue",
+      "foreignKey": "issueIds"
+    },
+    "publication": {
+      "type": "belongsTo",
+      "model": "Publication",
+      "foreignKey": "publicationId"
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "Order",
+      "foreignKey": "adId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

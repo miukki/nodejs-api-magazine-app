@@ -1,0 +1,36 @@
+{
+  "name": "Option",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "cost": {
+      "type": "number",
+      "required": true
+    },
+    "attachmentType": {
+      "type": "string"
+    },
+    "custom": {
+      "type": "object",
+      "required": true,
+      "default": {}
+    }
+  },
+  "validations": [],
+  "relations": {
+    "optionGroup": {
+      "type": "belongsTo",
+      "model": "OptionGroup",
+      "foreignKey": "optionGroupId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,37 @@
+
+<section>
+  <legend>{{action}}</legend><br/>
+  Time zone: UTC offcet: +0700 (Krasnoyarsk time zone)
+
+  <select ng-init="filterTitle = 'active' "
+          ng-model="filterTitle"
+          ng-options="item for item in ['active', 'archive']">
+  </select>
+
+
+  <article ng-repeat="r in ads[filterTitle] | orderBy:r.active">
+    <p ng-int>
+      createAt: {{r.createdAt | moment }} |
+      updatedAt: {{r.updatedAt | moment }}  |
+      <span ng-hide="!r.submissionDeadline">
+        submission Deadline: {{r.submissionDeadline | moment }} |</span>
+      <span ng-hide="!r.publishAt">
+        publish At: {{r.publishAt | moment }} |</span>
+
+      {{r.category.name}} | text: {{r.text}}
+      <span ng-hide="!r.actions.length">| actions:
+        <span ng-repeat="a in r.actions">
+          {{a.name}}<span ng-hide="$index == r.actions.length - 1">,</span>
+        </span>
+      </span>
+    <span class="actions">
+      <button ng-disabled="r.freezing" ui-sref="edit-ad.abs({ id: r.id })">Edit {{r.freezing ? 'it is freezing' : ''}}</button>
+      <button a ui-sref="preview-ad.abs({ id: r.id, isEditMode: true })">Previe</button>
+      <button a ui-sref="delete-ad({ id: r.id })">Delete</button>
+    </span>
+    </p>
+  </article>
+
+
+
+</section>

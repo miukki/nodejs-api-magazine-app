@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>magazine app</title>
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header ng-controller="header">
+      <h2 ng-show="currentUserId">User name: {{currentUserEmail}}</h2>
+      <nav>
+        <ul>
+          <li>
+            <a ui-sref="all-ads" ui-sref-active="active">All ads</a>
+          </li>
+          <li>
+            <a ui-sref="category-ad({id: null})" ui-sref-active="active">Create an ad</a>
+          </li>
+          <li ng-hide="currentUserId">
+            <a ui-sref="sign-up" ui-sref-active="active">Sign up</a>
+          </li>
+          <li ng-show="currentUserId">
+            <a ui-sref="my-ads" ui-sref-active="active">My ads</a>
+          </li>
+          <li ng-hide="currentUserId">
+            <a ui-sref="login" ui-sref-active="active">Log in</a>
+          </li>
+          <li ng-show="currentUserId">
+            <a ui-sref="logout" ui-sref-active="active">Log out</a>
+          </li>
+          <li ng-show="currentUserId">
+            <a ui-sref="my-profile" ui-sref-active="active">My profile</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main ui-view><i>loading...</i></main>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <!---     <script src="bower_components/moment/locale/ru.js"></script>
+ -->
+    <script src="bower_components/angular-moment/angular-moment.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/tmpls.js"></script>
+    <script src="js/services/lb-services.js"></script>
+    <script src="js/services/main-services.js"></script>
+    <script src="js/services/main-filters.js"></script>
+    <script src="js/ctrls.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,5 @@
+Time zone: UTC offcet: +0700 (Krasnoyarsk time zone)<br/>
+<label ng-repeat="i in issues">
+  <input type="checkbox" checked ng-disabled="true">
+  <span>publishAt: {{i.publishAt | moment: 'MM.DD.YY HH:mm'}}</span>
+</label>

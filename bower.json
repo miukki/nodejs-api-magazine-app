@@ -1,0 +1,25 @@
+{
+  "name": "magazine-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/falcondai/magazine-app",
+  "authors": [
+    "Anja Ishmukhametova <miukki@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-local-storage": "~0.2.3",
+    "angular-moment": "~1.0.0-beta.2",
+    "moment": "~2.10.6",
+    "angular": "~1.4.8",
+    "angular-resource": "~1.4.8",
+    "angular-ui-router": "~0.2.15"
+  }
+}

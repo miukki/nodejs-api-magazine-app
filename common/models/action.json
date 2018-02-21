@@ -1,0 +1,29 @@
+{
+  "name": "Action",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "categories": {
+      "type": "hasMany",
+      "model": "Category",
+      "foreignKey": "actionIds"
+    },
+    "ads": {
+      "type": "hasMany",
+      "model": "Ad",
+      "foreignKey": "actionIds"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

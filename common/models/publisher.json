@@ -1,0 +1,19 @@
+{
+  "name": "Publisher",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "publications": {
+      "type": "hasMany",
+      "model": "Publication",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
